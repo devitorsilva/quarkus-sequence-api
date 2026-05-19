@@ -44,3 +44,49 @@ This project was created as a technical exercise to demonstrate backend developm
   "error": "",
   "result": "12"
 }
+```
+
+## Running Locally
+
+```bash
+./mvnw quarkus:dev
+```
+
+The API will be available at:
+
+- `http://localhost:8080/labseq/{n}`
+- `http://localhost:8080/labseq/clean-cache`
+
+Swagger UI:
+
+- `http://localhost:8080/swagger-ui`
+
+OpenAPI spec:
+
+- `http://localhost:8080/openapi`
+
+## Running with Docker
+
+Build the image:
+
+```bash
+docker build -t sequence-calculator-api .
+```
+
+Run the container:
+
+```bash
+docker run --rm -p 8080:8080 sequence-calculator-api
+```
+
+## Technical Notes
+
+- The API uses in-memory caching to avoid recalculating previously requested values.
+- `transactionTime` represents execution time in milliseconds.
+- For large calculations, the response may include an error message if execution exceeds the allowed time.
+- All JSON responses are returned through a dedicated DTO.
+
+## Notes
+
+- This repository is kept as a technical sample project.
+- The main focus is backend implementation and API behavior rather than product-level UI or persistence.
